@@ -37,6 +37,14 @@ public class TicTacToeTest {
      *  Guideline: Triangulation -
      */
 
+    private String getGameMessageXWon() {
+        return "X won";
+    }
+
+    private String getGameMessageNodyWon() {
+        return "Nobody won";
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
@@ -44,7 +52,8 @@ public class TicTacToeTest {
         String board = "one by one";
 
         //Production code
-        String gameResult = board.equals("one by one") ? getGameMessageXWon() : "Nobody won";
+        String boardOneByOne = "one by one";
+        String gameResult = boardOneByOne.equals("one by one") ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -61,10 +70,11 @@ public class TicTacToeTest {
     @Test
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
         //Arrange
-        String board = "two by two with X on left column";
+        String board = "two by two" + " with X on left column";
 
         //Production code
-        String gameResult = board.equals("two by two with X on left column") ? getGameMessageXWon() : "Nobody won";
+        String boardTwoByTwo = "two by two";
+        String gameResult = board.equals(boardTwoByTwo + " with X on left column") ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -81,10 +91,11 @@ public class TicTacToeTest {
     @Test
     public void forTwoByTwoBoardXWinsOnRightColumn() {
         //Arrange
-        String board = "two by two with X on right column";
+        String board = "two by two" + " with X on right column";
 
         //Production code
-        String gameResult = board.equals("two by two with X on right column") ? getGameMessageXWon() : "Nobody won";
+        String boardTwoByTwo = "two by two";
+        String gameResult = board.equals(boardTwoByTwo + " with X on right column") ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -93,7 +104,4 @@ public class TicTacToeTest {
         assertEquals(getGameMessageXWon(), actual);
     }
 
-    private String getGameMessageXWon() {
-        return "X won";
-    }
 }
