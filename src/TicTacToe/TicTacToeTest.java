@@ -49,6 +49,10 @@ public class TicTacToeTest {
         return typeOfBoard + boardStructure;
     }
 
+    private String getGameResult(String boardStructure, String boardSize, String board) {
+        return board.equals(boardSize + boardStructure) ? getGameMessageXWon() : getGameMessageNodyWon();
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
@@ -56,10 +60,12 @@ public class TicTacToeTest {
         String boardOneByOne = "one by one";
 
         //Arrange
-        String board = buildBoard(boardOneByOne, "");
+        String boardStructure = "";
+        String boardSize = boardOneByOne;
+        String board = buildBoard(boardSize, boardStructure);
 
         //Production code
-        String gameResult = board.equals(boardOneByOne) ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = getGameResult(boardStructure, boardSize, board);
 
         //Act
         String actual = gameResult;
@@ -67,6 +73,8 @@ public class TicTacToeTest {
         //Assert
         assertEquals(getGameMessageXWon(), actual);
     }
+
+
 
     /**
      *  Introducing notion of column
@@ -79,14 +87,16 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
         String column = "column";
         String tokenVicinityPosition = "with X on";
-        String space = " ";
         String direction = "left";
 
         //Arrange
-        String board = buildBoard(boardTwoByTwo, space + tokenVicinityPosition + space + direction + space + column);
+        String space = " ";
+        String boardSize = boardTwoByTwo;
+        String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
+        String board = buildBoard(boardSize, boardStructure);
 
         //Production code
-        String gameResult = board.equals(boardTwoByTwo + space + tokenVicinityPosition + space + direction + space + column) ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = getGameResult(boardStructure, boardSize, board);
 
         //Act
         String actual = gameResult;
@@ -106,14 +116,16 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
         String column = "column";
         String tokenVicinityPosition = "with X on";
-        String space = " ";
         String direction = "right";
 
         //Arrange
-        String board = buildBoard(boardTwoByTwo, space + tokenVicinityPosition + space + direction + space + column);
+        String space = " ";
+        String boardSize = boardTwoByTwo;
+        String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
+        String board = buildBoard(boardSize, boardStructure);
 
         //Production code
-        String gameResult = board.equals(boardTwoByTwo + space + tokenVicinityPosition + space + direction + space + column) ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = getGameResult(boardStructure, boardSize, board);
 
         //Act
         String actual = gameResult;
