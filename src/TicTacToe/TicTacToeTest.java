@@ -59,11 +59,8 @@ public class TicTacToeTest {
         String boardSize = boardOneByOne;
         String board = buildBoard(boardSize, boardStructure);
 
-        //Production code
-        String gameResultString = gameResult.getGameResult(boardStructure, boardSize, board);
-
         //Act
-        String actual = gameResultString;
+        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
@@ -88,11 +85,8 @@ public class TicTacToeTest {
         String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
         String board = buildBoard(boardSize, boardStructure);
 
-        //Production code
-        String gameResultString = gameResult.getGameResult(boardStructure, boardSize, board);
-
         //Act
-        String actual = gameResultString;
+        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
@@ -117,11 +111,8 @@ public class TicTacToeTest {
         String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
         String board = buildBoard(boardSize, boardStructure);
 
-        //Production code
-        String gameResultString = gameResult.getGameResult(boardStructure, boardSize, board);
-
         //Act
-        String actual = gameResultString;
+        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
