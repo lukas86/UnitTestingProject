@@ -37,7 +37,7 @@ public class TicTacToeTest {
      * Guideline: Triangulation -
      */
 
-    GameResult gameResult;
+    private GameResult gameResult;
 
     @BeforeEach
     void setup() {
@@ -48,14 +48,21 @@ public class TicTacToeTest {
         return typeOfBoard + boardStructure;
     }
 
+    private String buildBoardStructure(String tokenVicinityPosition, String direction) {
+        String column = "column"; String space = " ";
+        return space + tokenVicinityPosition + space + direction + space + column;
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
         //Settings
         String boardOneByOne = "one by one";
+        String tokenVicinityPosition = "";
+        String direction = "";
 
         //Arrange
-        String boardStructure = "";
+        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
         String boardSize = boardOneByOne;
         String board = buildBoard(boardSize, boardStructure);
 
@@ -75,14 +82,12 @@ public class TicTacToeTest {
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
         //Settings
         String boardTwoByTwo = "two by two";
-        String column = "column";
         String tokenVicinityPosition = "with X on";
         String direction = "left";
 
         //Arrange
-        String space = " ";
         String boardSize = boardTwoByTwo;
-        String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
+        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
         String board = buildBoard(boardSize, boardStructure);
 
         //Act
@@ -101,14 +106,12 @@ public class TicTacToeTest {
     public void forTwoByTwoBoardXWinsOnRightColumn() {
         //Settings
         String boardTwoByTwo = "two by two";
-        String column = "column";
         String tokenVicinityPosition = "with X on";
         String direction = "right";
 
         //Arrange
-        String space = " ";
         String boardSize = boardTwoByTwo;
-        String boardStructure = space + tokenVicinityPosition + space + direction + space + column;
+        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
         String board = buildBoard(boardSize, boardStructure);
 
         //Act
