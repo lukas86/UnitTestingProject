@@ -8,7 +8,7 @@ public class TicTacToeTest {
     /**
      * Red -> Green -> Refactor
      *
-     *  Guideline 1: Always start with outputs when doing analysis
+     *  Guideline : Always start with outputs when doing analysis
      *
      * Tic Tac Toe Game:
      *  * 3x3 board
@@ -37,16 +37,41 @@ public class TicTacToeTest {
      *  Guideline: Triangulation -
      */
 
-
     @Test
     public void forOneByOneBoardXAlwaysWins() {
+        //Arrange
         String board = "one by one";
-
         String expected = "X won";
+
+        //Production code
         String gameResult = board.equals("one by one") ? "X won" : "Nobody won";
 
+        //Act
         String actual = gameResult;
 
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    /**
+     *
+     *  X 0
+     *  X 0
+     *
+     */
+    @Test
+    public void forTwoByTwoBoardXWinsColumn() {
+        //Arrange
+        String board = "two by two with X on left column";
+        String expected = "X won";
+
+        //Production code
+        String gameResult = board.equals("two by two with X on left column")? "X won" : "Nobody won";
+
+        //Act
+        String actual = gameResult;
+
+        //Assert
         assertEquals(expected, actual);
     }
 }
