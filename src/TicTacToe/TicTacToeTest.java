@@ -37,6 +37,7 @@ public class TicTacToeTest {
      *  Guideline: Triangulation -
      */
 
+    //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
         //Arrange
@@ -54,10 +55,9 @@ public class TicTacToeTest {
     }
 
     /**
-     *
+     *  Introducing notion of column
      *  X 0
      *  X 0
-     *
      */
     @Test
     public void forTwoByTwoBoardXWinsColumn() {
