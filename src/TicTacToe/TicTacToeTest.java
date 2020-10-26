@@ -57,16 +57,37 @@ public class TicTacToeTest {
     /**
      *  Introducing notion of column
      *  X 0
-     *  X 0
+     *  X
      */
     @Test
-    public void forTwoByTwoBoardXWinsColumn() {
+    public void forTwoByTwoBoardXWinsOnLeftColumn() {
         //Arrange
         String board = "two by two with X on left column";
         String expected = "X won";
 
         //Production code
         String gameResult = board.equals("two by two with X on left column")? "X won" : "Nobody won";
+
+        //Act
+        String actual = gameResult;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    /**
+     *  Introduced no new notion
+     *  0 X
+     *    X
+     */
+    @Test
+    public void forTwoByTwoBoardXWinsOnRightColumn() {
+        //Arrange
+        String board = "two by two with X on right column";
+        String expected = "X won";
+
+        //Production code
+        String gameResult = board.equals("two by two with X on right column") ? "X won" : "Nobody won";
 
         //Act
         String actual = gameResult;
