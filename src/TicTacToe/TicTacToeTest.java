@@ -45,15 +45,23 @@ public class TicTacToeTest {
         return "Nobody won";
     }
 
+    private String buildBoard(String boardStructure, String typeOfBoard) {
+        return typeOfBoard + boardStructure;
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
+        //Settings
+        String boardOneByOne = "one by one";
+
         //Arrange
-        String board = "one by one";
+        String boardStructure = "";
+        String typeOfBoard = boardOneByOne;
+        String board = buildBoard(boardStructure, typeOfBoard);
 
         //Production code
-        String boardOneByOne = "one by one";
-        String gameResult = boardOneByOne.equals("one by one") ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = board.equals(boardOneByOne) ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -69,12 +77,17 @@ public class TicTacToeTest {
      */
     @Test
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
+        //Settings
+        String boardTwoByTwo = "two by two";
+        String column = "column";
+
         //Arrange
-        String board = "two by two" + " with X on left column";
+        String boardStructure = " with X on left " + column;
+        String typeOfBoard = boardTwoByTwo;
+        String board = buildBoard(boardStructure, typeOfBoard);
 
         //Production code
-        String boardTwoByTwo = "two by two";
-        String gameResult = board.equals(boardTwoByTwo + " with X on left column") ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = board.equals(boardTwoByTwo + " with X on left " + column) ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -90,12 +103,17 @@ public class TicTacToeTest {
      */
     @Test
     public void forTwoByTwoBoardXWinsOnRightColumn() {
+        //Settings
+        String boardTwoByTwo = "two by two";
+        String column = "column";
+
         //Arrange
-        String board = "two by two" + " with X on right column";
+        String boardStructure = " with X on right " + column;
+        String typeOfBoard = boardTwoByTwo;
+        String board = buildBoard(boardStructure, typeOfBoard);
 
         //Production code
-        String boardTwoByTwo = "two by two";
-        String gameResult = board.equals(boardTwoByTwo + " with X on right column") ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = board.equals(boardTwoByTwo + " with X on right " + column) ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -103,5 +121,7 @@ public class TicTacToeTest {
         //Assert
         assertEquals(getGameMessageXWon(), actual);
     }
+
+
 
 }
