@@ -45,7 +45,7 @@ public class TicTacToeTest {
         return "Nobody won";
     }
 
-    private String buildBoard(String boardStructure, String typeOfBoard) {
+    private String buildBoard(String typeOfBoard, String boardStructure) {
         return typeOfBoard + boardStructure;
     }
 
@@ -56,9 +56,7 @@ public class TicTacToeTest {
         String boardOneByOne = "one by one";
 
         //Arrange
-        String boardStructure = "";
-        String typeOfBoard = boardOneByOne;
-        String board = buildBoard(boardStructure, typeOfBoard);
+        String board = buildBoard(boardOneByOne, "");
 
         //Production code
         String gameResult = board.equals(boardOneByOne) ? getGameMessageXWon() : getGameMessageNodyWon();
@@ -80,14 +78,15 @@ public class TicTacToeTest {
         //Settings
         String boardTwoByTwo = "two by two";
         String column = "column";
+        String tokenVicinityPosition = "with X on";
+        String space = " ";
+        String direction = "left";
 
         //Arrange
-        String boardStructure = " with X on left " + column;
-        String typeOfBoard = boardTwoByTwo;
-        String board = buildBoard(boardStructure, typeOfBoard);
+        String board = buildBoard(boardTwoByTwo, space + tokenVicinityPosition + space + direction + space + column);
 
         //Production code
-        String gameResult = board.equals(boardTwoByTwo + " with X on left " + column) ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = board.equals(boardTwoByTwo + space + tokenVicinityPosition + space + direction + space + column) ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
@@ -106,14 +105,15 @@ public class TicTacToeTest {
         //Settings
         String boardTwoByTwo = "two by two";
         String column = "column";
+        String tokenVicinityPosition = "with X on";
+        String space = " ";
+        String direction = "right";
 
         //Arrange
-        String boardStructure = " with X on right " + column;
-        String typeOfBoard = boardTwoByTwo;
-        String board = buildBoard(boardStructure, typeOfBoard);
+        String board = buildBoard(boardTwoByTwo, space + tokenVicinityPosition + space + direction + space + column);
 
         //Production code
-        String gameResult = board.equals(boardTwoByTwo + " with X on right " + column) ? getGameMessageXWon() : getGameMessageNodyWon();
+        String gameResult = board.equals(boardTwoByTwo + space + tokenVicinityPosition + space + direction + space + column) ? getGameMessageXWon() : getGameMessageNodyWon();
 
         //Act
         String actual = gameResult;
