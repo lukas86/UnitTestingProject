@@ -38,26 +38,12 @@ public class TicTacToeTest {
      */
 
     private GameResult gameResult;
+    private BoardBuilder boardBuilder;
 
     @BeforeEach
     void setup() {
         gameResult = new GameResult();
-    }
-
-    private String buildBoardRepresentation(String typeOfBoard, String boardStructure) {
-        return typeOfBoard + boardStructure;
-    }
-
-    private String buildBoardStructure(String tokenVicinityPosition, String direction) {
-        String column = "column"; String space = " ";
-        return space + tokenVicinityPosition + space + direction + space + column;
-    }
-
-    private Board buildBoardRepresentation(String boardTwoByTwo, String s, String right) {
-        String boardSize = boardTwoByTwo;
-        String boardStructure = buildBoardStructure(s, right);
-        String board = buildBoardRepresentation(boardSize, boardStructure);
-        return new Board(boardStructure, boardSize, board);
+        boardBuilder = new BoardBuilder();
     }
 
     //Introduced notion of winning
@@ -67,7 +53,7 @@ public class TicTacToeTest {
         String boardOneByOne = "one by one";
 
         //Arrange
-        Board boardObject = buildBoardRepresentation(boardOneByOne, "", "");
+        Board boardObject = boardBuilder.buildBoardRepresentation(boardOneByOne, "", "");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -87,7 +73,7 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        Board boardObject = buildBoardRepresentation(boardTwoByTwo, "with X on", "left");
+        Board boardObject = boardBuilder.buildBoardRepresentation(boardTwoByTwo, "with X on", "left");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -107,7 +93,7 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        Board boardObject = buildBoardRepresentation(boardTwoByTwo, "with X on", "right");
+        Board boardObject = boardBuilder.buildBoardRepresentation(boardTwoByTwo, "with X on", "right");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
