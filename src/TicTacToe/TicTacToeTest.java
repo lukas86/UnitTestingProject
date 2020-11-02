@@ -46,6 +46,14 @@ public class TicTacToeTest {
         boardBuilder = new BoardBuilder();
     }
 
+    private String getBoardTwoByTwo() {
+        return "two by two";
+    }
+
+    private String getTokenVicinityPosition(String token) {
+        return "with " + token + " on";
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
@@ -72,12 +80,11 @@ public class TicTacToeTest {
     @Test
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
         //Settings
-        String boardTwoByTwo = "two by two";
-        String tokenVicinityPosition = "with X on";
         String direction = "left";
+        String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
+        Board boardObject = boardBuilder.build(getBoardTwoByTwo(), getTokenVicinityPosition(token), direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -94,12 +101,11 @@ public class TicTacToeTest {
     @Test
     public void forTwoByTwoBoardXWinsOnRightColumn() {
         //Settings
-        String boardTwoByTwo = "two by two";
-        String tokenVicinityPosition = "with X on";
         String direction = "right";
+        String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
+        Board boardObject = boardBuilder.build(getBoardTwoByTwo(), getTokenVicinityPosition(token), direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -108,16 +114,19 @@ public class TicTacToeTest {
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
 
-
+    /**
+     *  Introduced no new notion
+     *  X X
+     *  0
+     */
     @Test
     void forTwoByTwoBoardXWinsOnTopLine() {
         //Settings
-        String boardTwoByTwo = "two by two";
-        String tokenVicinityPosition = "with X on";
         String direction = "top";
+        String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
+        Board boardObject = boardBuilder.build(getBoardTwoByTwo(), getTokenVicinityPosition(token), direction);
 
         //Act
         String productionCode = gameResult.getGameResult(boardObject);
@@ -126,5 +135,8 @@ public class TicTacToeTest {
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
+
+
+
 
 }
