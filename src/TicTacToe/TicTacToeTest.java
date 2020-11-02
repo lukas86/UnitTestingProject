@@ -124,7 +124,7 @@ public class TicTacToeTest {
         String actual = productionCode;
 
         //Assert
-        assertEquals("X won", actual);
+        assertEquals(gameResult.getGameMessageXWon(), actual);
     }
 
 }
