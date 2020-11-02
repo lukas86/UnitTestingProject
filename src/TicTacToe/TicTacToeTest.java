@@ -53,6 +53,13 @@ public class TicTacToeTest {
         return space + tokenVicinityPosition + space + direction + space + column;
     }
 
+    private Board buildBoard(String boardTwoByTwo, String s, String right) {
+        String boardSize = boardTwoByTwo;
+        String boardStructure = buildBoardStructure(s, right);
+        String board = buildBoard(boardSize, boardStructure);
+        return new Board(boardStructure, boardSize, board);
+    }
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
@@ -60,12 +67,10 @@ public class TicTacToeTest {
         String boardOneByOne = "one by one";
 
         //Arrange
-        String boardStructure = buildBoardStructure("", "");
-        String boardSize = boardOneByOne;
-        String board = buildBoard(boardSize, boardStructure);
+        Board boardObject = buildBoard(boardOneByOne, "", "");
 
         //Act
-        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
+        String actual = gameResult.getGameResult(boardObject);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
@@ -82,12 +87,10 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        String boardSize = boardTwoByTwo;
-        String boardStructure = buildBoardStructure("with X on", "left");
-        String board = buildBoard(boardSize, boardStructure);
+        Board boardObject = buildBoard(boardTwoByTwo, "with X on", "left");
 
         //Act
-        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
+        String actual = gameResult.getGameResult(boardObject);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
@@ -104,16 +107,15 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        String boardSize = boardTwoByTwo;
-        String boardStructure = buildBoardStructure("with X on", "right");
-        String board = buildBoard(boardSize, boardStructure);
+        Board boardObject = buildBoard(boardTwoByTwo, "with X on", "right");
 
         //Act
-        String actual = gameResult.getGameResult(boardStructure, boardSize, board);
+        String actual = gameResult.getGameResult(boardObject);
 
         //Assert
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
+
 
 
 

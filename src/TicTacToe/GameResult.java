@@ -6,8 +6,8 @@ public class GameResult {
         return "X won";
     }
 
-    public String getGameResult(String boardStructure, String boardSize, String board) {
-        return board.equals(boardSize + boardStructure) ? getGameMessageXWon() : getGameMessageNodyWon();
+    public String getGameResult(Board board) {
+        return board.getBoard().equals(board.getBoardSize() + board.getBoardStructure()) ? getGameMessageXWon() : getGameMessageNodyWon();
     }
 
     private String getGameMessageNodyWon() {
