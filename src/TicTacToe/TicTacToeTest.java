@@ -109,6 +109,22 @@ public class TicTacToeTest {
     }
 
 
+    @Test
+    void forTwoByTwoBoardXWinsOnTopLine() {
+        //Settings
+        String boardTwoByTwo = "two by two";
+        String tokenVicinityPosition = "with X on";
+        String direction = "top";
 
+        //Arrange
+        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
+
+        //Act
+        String productionCode = gameResult.getGameResult(boardObject);
+        String actual = productionCode;
+
+        //Assert
+        assertEquals("X won", actual);
+    }
 
 }

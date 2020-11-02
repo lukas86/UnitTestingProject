@@ -11,14 +11,14 @@ public class Board {
         this.template = template;
     }
 
-    public Board(String structure) {
-        this.structure = structure;
-    }
-
-    public Board(String structure, String size) {
-        this.structure = structure;
-        this.size = size;
-    }
+//    public Board(String structure) {
+//        this.structure = structure;
+//    }
+//
+//    public Board(String structure, String size) {
+//        this.structure = structure;
+//        this.size = size;
+//    }
 
     public String getStructure() {
         return structure;
