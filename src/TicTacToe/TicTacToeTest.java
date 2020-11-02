@@ -44,7 +44,7 @@ public class TicTacToeTest {
         gameResult = new GameResult();
     }
 
-    private String buildBoard(String typeOfBoard, String boardStructure) {
+    private String buildBoardRepresentation(String typeOfBoard, String boardStructure) {
         return typeOfBoard + boardStructure;
     }
 
@@ -53,10 +53,10 @@ public class TicTacToeTest {
         return space + tokenVicinityPosition + space + direction + space + column;
     }
 
-    private Board buildBoard(String boardTwoByTwo, String s, String right) {
+    private Board buildBoardRepresentation(String boardTwoByTwo, String s, String right) {
         String boardSize = boardTwoByTwo;
         String boardStructure = buildBoardStructure(s, right);
-        String board = buildBoard(boardSize, boardStructure);
+        String board = buildBoardRepresentation(boardSize, boardStructure);
         return new Board(boardStructure, boardSize, board);
     }
 
@@ -67,7 +67,7 @@ public class TicTacToeTest {
         String boardOneByOne = "one by one";
 
         //Arrange
-        Board boardObject = buildBoard(boardOneByOne, "", "");
+        Board boardObject = buildBoardRepresentation(boardOneByOne, "", "");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -87,7 +87,7 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        Board boardObject = buildBoard(boardTwoByTwo, "with X on", "left");
+        Board boardObject = buildBoardRepresentation(boardTwoByTwo, "with X on", "left");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -107,7 +107,7 @@ public class TicTacToeTest {
         String boardTwoByTwo = "two by two";
 
         //Arrange
-        Board boardObject = buildBoard(boardTwoByTwo, "with X on", "right");
+        Board boardObject = buildBoardRepresentation(boardTwoByTwo, "with X on", "right");
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
