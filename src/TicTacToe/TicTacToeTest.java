@@ -51,9 +51,11 @@ public class TicTacToeTest {
     public void forOneByOneBoardXAlwaysWins() {
         //Settings
         String boardOneByOne = "one by one";
+        String tokenVicinityPosition = "";
+        String direction = "";
 
         //Arrange
-        Board boardObject = boardBuilder.buildBoardRepresentation(boardOneByOne, "", "");
+        Board boardObject = boardBuilder.build(boardOneByOne, tokenVicinityPosition, direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -71,9 +73,11 @@ public class TicTacToeTest {
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
         //Settings
         String boardTwoByTwo = "two by two";
+        String tokenVicinityPosition = "with X on";
+        String direction = "left";
 
         //Arrange
-        Board boardObject = boardBuilder.buildBoardRepresentation(boardTwoByTwo, "with X on", "left");
+        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -91,9 +95,11 @@ public class TicTacToeTest {
     public void forTwoByTwoBoardXWinsOnRightColumn() {
         //Settings
         String boardTwoByTwo = "two by two";
+        String tokenVicinityPosition = "with X on";
+        String direction = "right";
 
         //Arrange
-        Board boardObject = boardBuilder.buildBoardRepresentation(boardTwoByTwo, "with X on", "right");
+        Board boardObject = boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);

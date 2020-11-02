@@ -7,7 +7,7 @@ public class GameResult {
     }
 
     public String getGameResult(Board board) {
-        return board.getBoard().equals(board.getBoardSize() + board.getBoardStructure()) ? getGameMessageXWon() : getGameMessageNodyWon();
+        return board.getTemplate().equals(board.getSize() + board.getStructure()) ? getGameMessageXWon() : getGameMessageNodyWon();
     }
 
     private String getGameMessageNodyWon() {

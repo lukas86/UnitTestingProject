@@ -3,19 +3,20 @@ package TicTacToe;
 import TicTacToe.Board;
 
 public class BoardBuilder {
+
+    private final String column = "column";
+    private final String space = " ";
+
+    private String buildBoardStructure(String tokenVicinityPosition, String direction) {
+        return space + tokenVicinityPosition + space + direction + space + column;
+    }
+
     private String buildBoardRepresentation(String typeOfBoard, String boardStructure) {
         return typeOfBoard + boardStructure;
     }
 
-    private String buildBoardStructure(String tokenVicinityPosition, String direction) {
-        String column = "column";
-        String space = " ";
-        return space + tokenVicinityPosition + space + direction + space + column;
-    }
-
-    public Board buildBoardRepresentation(String boardTwoByTwo, String s, String right) {
-        String boardSize = boardTwoByTwo;
-        String boardStructure = buildBoardStructure(s, right);
+    public Board build(String boardSize, String tokenVicinityPosition, String direction) {
+        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
         String board = buildBoardRepresentation(boardSize, boardStructure);
         return new Board(boardStructure, boardSize, board);
     }
