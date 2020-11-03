@@ -155,6 +155,7 @@ public class TicTacToeTest {
         return boardBuilder.build(structure, tokenVicinityPosition, direction);
     }
 
+    //TODO : minimize duplication of instantiating BoardBuilder twice
     @Test
     void whenBoardIsEmptyNobodyWon() {
         //Arrange
