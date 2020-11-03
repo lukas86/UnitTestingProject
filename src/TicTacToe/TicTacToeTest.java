@@ -79,7 +79,7 @@ public class TicTacToeTest {
         String direction = "";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardStructure.getBoardOneByOne(), tokenVicinityPosition, direction);
+        Board boardObject = buildBoard(boardStructure.getBoardOneByOne(), tokenVicinityPosition, direction);
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -99,7 +99,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.left());
+        Board boardObject = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.left());
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -119,7 +119,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.right());
+        Board boardObject = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.right());
 
         //Act
         String actual = gameResult.getGameResult(boardObject);
@@ -139,7 +139,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board boardObject = boardBuilder.build(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.top());
+        Board boardObject = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.top());
 
         //Act
         String productionCode = gameResult.getGameResult(boardObject);
@@ -149,14 +149,18 @@ public class TicTacToeTest {
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
 
+    private Board buildBoard(String boardTwoByTwo, String tokenVicinityPosition, String top) {
+        return boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, top);
+    }
+
     @Test
     void whenBoardIsEmptyNobodyWon() {
         //Arrange
         String expected = "Nobody won";
-        String emptyBoard = "empty board";
+        //Board board = buildBoard(boardStructure.getEmptyBoard());
 
         //Production code
-        String gameResultTemp = gameResult.getGameResult(emptyBoard);
+        String gameResultTemp = gameResult.getGameResult(boardStructure.getEmptyBoard());
 
         //Act
         String actual = gameResultTemp;
@@ -164,5 +168,6 @@ public class TicTacToeTest {
         //Assert
         assertEquals(expected, actual);
     }
+
 
 }
