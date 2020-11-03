@@ -149,21 +149,19 @@ public class TicTacToeTest {
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
 
-    private Board buildBoard(String boardTwoByTwo, String tokenVicinityPosition, String top) {
-        return boardBuilder.build(boardTwoByTwo, tokenVicinityPosition, top);
+    private Board buildBoard(String structure, String tokenVicinityPosition, String direction) {
+        //boardBuilder.withSize(size).withStructure()
+        String boardTemplate = boardbuilder.buildBoardRepresentation(boardSize, boardStructure, "");
+        return boardBuilder.build(structure, tokenVicinityPosition, direction);
     }
 
     @Test
     void whenBoardIsEmptyNobodyWon() {
         //Arrange
         String expected = "Nobody won";
-        //Board board = buildBoard(boardStructure.getEmptyBoard());
-
-        //Production code
-        String gameResultTemp = gameResult.getGameResult(boardStructure.getEmptyBoard());
 
         //Act
-        String actual = gameResultTemp;
+        String actual = gameResult.getGameResult(buildBoard(boardStructure.getEmptyBoard(), "", ""));
 
         //Assert
         assertEquals(expected, actual);
