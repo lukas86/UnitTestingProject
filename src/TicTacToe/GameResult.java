@@ -6,11 +6,12 @@ public class GameResult {
         return "X won";
     }
 
-    public String getGameResult(Board board) {
-        return board.getTemplate().equals(board.getSize() + board.getStructure()) ? getGameMessageXWon() : getGameMessageNodyWon();
-    }
-
-    private String getGameMessageNodyWon() {
+    private String getGameMessageNobodyWon() {
         return "Nobody won";
     }
+
+    public String getGameResult(Board board) {
+        return board.getTemplate().equals(board.getSize() + board.getStructure()) ? getGameMessageXWon() : getGameMessageNobodyWon();
+    }
+
 }

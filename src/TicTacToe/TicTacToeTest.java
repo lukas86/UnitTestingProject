@@ -149,4 +149,24 @@ public class TicTacToeTest {
         assertEquals(gameResult.getGameMessageXWon(), actual);
     }
 
+    @Test
+    void whenBoardIsEmptyNobodyWon() {
+        //Arrange
+        String expected = "Nobody won";
+        String emptyBoard = "empty board";
+
+        //Production code
+        String gameResultTemp = "";
+        String currentBoard = emptyBoard;
+        if(currentBoard.equals(emptyBoard)) {
+            gameResultTemp = "Nobody won";
+        }
+
+        //Act
+        String actual = gameResultTemp;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
 }
