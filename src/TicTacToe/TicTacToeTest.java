@@ -37,6 +37,23 @@ public class TicTacToeTest {
      * Guideline: Triangulation -
      */
 
+    /**
+     *  Design Experiments
+     *  Hypothesis: "two by two", "one by one" should be a class "BoardStructure"
+     *
+     *  Plus:
+     *  No more primitives about Board Structure in the tests.
+     *  All the structure will be in one place. Structural coherence.
+     *  Some coupling is expected from the tests, but only one other class will use BoardStructure.
+     *  Duplication will be removed in-between tests.
+     *  Clarity will be better because a cohesive design structure is extracted.
+     *
+     *  Minus:
+     *  Increased code complexity, because of a new design element.
+     *
+     *
+     */
+
     private GameResult gameResult;
     private BoardBuilder boardBuilder;
 
