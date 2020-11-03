@@ -156,11 +156,7 @@ public class TicTacToeTest {
         String emptyBoard = "empty board";
 
         //Production code
-        String gameResultTemp = "";
-        String currentBoard = emptyBoard;
-        if(currentBoard.equals(emptyBoard)) {
-            gameResultTemp = "Nobody won";
-        }
+        String gameResultTemp = gameResult.getGameResult(emptyBoard);
 
         //Act
         String actual = gameResultTemp;
