@@ -4,15 +4,15 @@ package TicTacToe;
  * When duplication is funneled into the same class, it is a good thing
  */
 public class GameResult {
-    GameMessage gameMessage;
+    private final BoardStructure boardStructure;
+    private final GameMessage gameMessage;
 
-    public GameResult(GameMessage gameMessage) {
+    public GameResult(GameMessage gameMessage, BoardStructure boardStructure) {
         this.gameMessage = gameMessage;
+        this.boardStructure = boardStructure;
     }
 
     public String getGameResult(Board board) {
-        //TODO : extract new BoardStructure to outside of this class
-        BoardStructure boardStructure = new BoardStructure();
         String currentBoard = board.getStructure();
         if (currentBoard.equals(boardStructure.getEmptyBoard())) {
             return new GameMessage().getGameMessageNobodyWon();
