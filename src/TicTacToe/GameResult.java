@@ -1,16 +1,16 @@
 package TicTacToe;
 
+/**
+ * When duplication is funneled into the same class, it is a good thing
+ */
 public class GameResult {
 
-    public String getGameMessageXWon() {
-        return "X won";
-    }
-
     public String getGameResult(Board board) {
-        return board.getTemplate().equals(board.getSize() + board.getStructure()) ? getGameMessageXWon() : getGameMessageNodyWon();
-    }
-
-    private String getGameMessageNodyWon() {
-        return "Nobody won";
+        BoardStructure boardStructure = new BoardStructure();
+        String currentBoard = board.getStructure();
+        if (currentBoard.equals(boardStructure.getEmptyBoard())) {
+            return new GameMessage().getGameMessageNobodyWon();
+        }
+        return board.getTemplate().equals(board.getSize() + board.getStructure()) ? new GameMessage().getGameMessageXWon() : new GameMessage().getGameMessageNobodyWon();
     }
 }
