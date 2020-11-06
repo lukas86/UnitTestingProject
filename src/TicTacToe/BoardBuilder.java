@@ -1,6 +1,11 @@
 package TicTacToe;
 
 public class BoardBuilder {
+    /**
+     * Hint: When you extract a method into a class, and it has an instance of said class as a parameter,
+     * you are crating more cohesion in the design
+     */
+
     private String structure;
     private String size;
     private String template;
@@ -24,6 +29,9 @@ public class BoardBuilder {
         return new Board(structure, size, template);
     }
 
+    public String getTokenVicinityPosition(String token) {
+        return "with " + token + " on";
+    }
 
     public String buildBoardTemplate(String typeOfBoard, String boardStructure) {
         return typeOfBoard + boardStructure;
@@ -34,15 +42,15 @@ public class BoardBuilder {
         return space + tokenVicinityPosition + space + direction + space + column;
     }
 
-    public Board buildBoard(String boardOneByOne, String tokenVicinityPosition, String direction, BoardBuilder boardBuilder) {
+    public Board buildBoard(String boardOneByOne, String token, String direction) {
         String boardSize = boardOneByOne;
-        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
+        String boardStructure = buildBoardStructure(getTokenVicinityPosition(token), direction);
         String boardTemplate = buildBoardTemplate(boardSize, boardStructure);
 
-        return boardBuilder.withStructure(boardStructure).withSize(boardSize).withTemplate(boardTemplate).build();
+        return withStructure(boardStructure).withSize(boardSize).withTemplate(boardTemplate).build();
     }
 
-    public Board buildBoard(String structure, BoardBuilder boardBuilder) {
-        return boardBuilder.withStructure(structure).build();
+    public Board buildBoard(String structure) {
+        return withStructure(structure).build();
     }
 }

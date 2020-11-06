@@ -69,14 +69,10 @@ public class TicTacToeTest {
         boardBuilder = new BoardBuilder();
     }
 
-    private String getTokenVicinityPosition(String token) {
-        return "with " + token + " on";
-    }
-
     @Test
     void whenBoardIsEmptyNobodyWon() {
         //Arrange
-        Board emptyBoard = boardBuilder.buildBoard(boardStructure.getEmptyBoard(), boardBuilder);
+        Board emptyBoard = boardBuilder.buildBoard(boardStructure.getEmptyBoard());
 
         //Act
         String actual = gameResult.getGameResult(emptyBoard);
@@ -85,16 +81,14 @@ public class TicTacToeTest {
         assertEquals(gameMessage.getGameMessageNobodyWon(), actual);
     }
 
-
-
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
         //Settings
-        String tokenVicinityPosition = "";
         String direction = "";
+
         //Arrange
-        Board board = boardBuilder.buildBoard(boardStructure.getBoardOneByOne(), tokenVicinityPosition, direction, boardBuilder);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardOneByOne(), Token.X(), direction);
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -110,11 +104,8 @@ public class TicTacToeTest {
      */
     @Test
     public void forTwoByTwoBoardXWinsOnLeftColumn() {
-        //Settings
-        String token = "X";
-
         //Arrange
-        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.left(), boardBuilder);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.left());
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -130,11 +121,8 @@ public class TicTacToeTest {
      */
     @Test
     public void forTwoByTwoBoardXWinsOnRightColumn() {
-        //Settings
-        String token = "X";
-
         //Arrange
-        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.right(), boardBuilder);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.right());
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -150,11 +138,8 @@ public class TicTacToeTest {
      */
     @Test
     public void forTwoByTwoBoardXWinsOnTopLine() {
-        //Settings
-        String token = "X";
-
         //Arrange
-        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.top(), boardBuilder);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.top());
 
         //Act
         String actual = gameResult.getGameResult(board);
