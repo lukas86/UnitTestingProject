@@ -1,10 +1,6 @@
 package TicTacToe;
 
 public class BoardBuilder {
-    /**
-     * Hint: When you extract a method into a class, and it has an instance of said class as a parameter,
-     * you are crating more cohesion in the design
-     */
 
     private String structure;
     private String size;

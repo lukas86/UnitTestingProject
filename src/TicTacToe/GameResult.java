@@ -1,8 +1,5 @@
 package TicTacToe;
 
-/**
- * When duplication is funneled into the same class, it is a good thing
- */
 public class GameResult {
     private final BoardStructure boardStructure;
     private final GameMessage gameMessage;
@@ -13,10 +10,15 @@ public class GameResult {
     }
 
     public String getGameResult(Board board) {
-        String currentBoard = board.getStructure();
-        if (currentBoard.equals(boardStructure.getEmptyBoard())) {
-            return new GameMessage().getGameMessageNobodyWon();
-        }
+        if (getGameResultForEmptyBoard(board)) return new GameMessage().getGameMessageNobodyWon();
+        return getGameMessageForNonEmptyBoard(board);
+    }
+
+    public boolean getGameResultForEmptyBoard(Board board) {
+        return board.getStructure().equals(boardStructure.getEmptyBoard());
+    }
+
+    public String getGameMessageForNonEmptyBoard(Board board) {
         return board.getTemplate().equals(board.getSize() + board.getStructure()) ? gameMessage.getGameMessageXWon() : new GameMessage().getGameMessageNobodyWon();
     }
 }

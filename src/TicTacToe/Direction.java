@@ -1,10 +1,5 @@
 package TicTacToe;
 
-/**
- * Naming Hint
- *
- * An extracted class name will result from noun duplication in all extracted methods
- */
 public class Direction {
     public String left() {
         return "left";

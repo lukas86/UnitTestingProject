@@ -1,0 +1,55 @@
+
+      Red -> Green -> Refactor
+      <p>
+      Guideline : Always start with outputs when doing analysis
+      <p>
+      Tic Tac Toe Game:
+      * 3x3 board
+      * X plays first
+      * 0 plays second
+      * results:
+      * X won
+      * 0 won
+      * Draw
+      * Win conditions:
+      * On column
+      * On line
+      * On diagonal
+      <p>
+      Inputs                      Outputs
+      X finished line             X won
+      X finished column           X won
+      X finished diagonal         X won
+      <p>
+      Guideline: SIMPLIFY !!!
+      <p>
+      Guideline: Introduce only one notion at a time, one per test
+      <p>
+      Guideline: The rule of three -  "only extract duplication when spotted at least three time"
+      <p>
+      Guideline: Triangulation -
+
+     * Design experiments
+     *
+     * Hypothesis: "two by two", "one by one" should be a class called "BoardStructure"
+     *
+     * Plus:
+     * No more primitives about BoardStructure in the tests
+     * All the structure will be in one space (Encapsulation)
+     * Some coupling is expected from the tests, but only one other class will us BoardStructure
+     * Duplication will be removed
+     * Clarity will be improved due to cohesive design structure
+     *
+     * Minus:
+     * Increased code complexity because of a new design elements
+
+
+      * Naming Hint
+      * An extracted class name will result from noun duplication in all extracted methods
+
+      * Hint: When you extract a method into a class, and it has an instance of said class as a parameter,
+      * you are crating more cohesion in the design
+
+/**
+ * When duplication is funneled into the same class, it is a good thing
+ */
