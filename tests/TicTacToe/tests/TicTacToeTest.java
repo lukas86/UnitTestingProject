@@ -69,23 +69,6 @@ public class TicTacToeTest {
         boardBuilder = new BoardBuilder();
     }
 
-    private String buildBoardTemplate(String typeOfBoard, String boardStructure) {
-        return typeOfBoard + boardStructure;
-    }
-
-    private String buildBoardStructure(String tokenVicinityPosition, String direction) {
-        String column = "column"; String space = " ";
-        return space + tokenVicinityPosition + space + direction + space + column;
-    }
-
-    private Board buildBoard(String boardOneByOne, String tokenVicinityPosition, String direction) {
-        String boardSize = boardOneByOne;
-        String boardStructure = buildBoardStructure(tokenVicinityPosition, direction);
-        String boardTemplate = buildBoardTemplate(boardSize, boardStructure);
-
-        return boardBuilder.withStructure(boardStructure).withSize(boardSize).withTemplate(boardTemplate).build();
-    }
-
     private String getTokenVicinityPosition(String token) {
         return "with " + token + " on";
     }
@@ -93,7 +76,7 @@ public class TicTacToeTest {
     @Test
     void whenBoardIsEmptyNobodyWon() {
         //Arrange
-        Board emptyBoard = boardBuilder.withStructure(boardStructure.getEmptyBoard()).build();
+        Board emptyBoard = boardBuilder.buildBoard(boardStructure.getEmptyBoard(), boardBuilder);
 
         //Act
         String actual = gameResult.getGameResult(emptyBoard);
@@ -102,6 +85,8 @@ public class TicTacToeTest {
         assertEquals(gameMessage.getGameMessageNobodyWon(), actual);
     }
 
+
+
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
@@ -109,7 +94,7 @@ public class TicTacToeTest {
         String tokenVicinityPosition = "";
         String direction = "";
         //Arrange
-        Board board = buildBoard(boardStructure.getBoardOneByOne(), tokenVicinityPosition, direction);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardOneByOne(), tokenVicinityPosition, direction, boardBuilder);
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -129,7 +114,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board board = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.left());
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.left(), boardBuilder);
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -149,7 +134,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board board = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.right());
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.right(), boardBuilder);
 
         //Act
         String actual = gameResult.getGameResult(board);
@@ -169,7 +154,7 @@ public class TicTacToeTest {
         String token = "X";
 
         //Arrange
-        Board board = buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.top());
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), getTokenVicinityPosition(token), direction.top(), boardBuilder);
 
         //Act
         String actual = gameResult.getGameResult(board);
