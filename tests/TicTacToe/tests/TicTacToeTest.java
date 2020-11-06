@@ -74,27 +74,18 @@ public class TicTacToeTest {
         //Arrange
         Board emptyBoard = boardBuilder.buildBoard(boardStructure.getEmptyBoard());
 
-        //Act
-        String actual = gameResult.getGameResult(emptyBoard);
-
         //Assert
-        assertEquals(gameMessage.getGameMessageNobodyWon(), actual);
+        assertEquals(gameMessage.getGameMessageNobodyWon(), gameResult.getGameResult(emptyBoard));
     }
 
     //Introduced notion of winning
     @Test
     public void forOneByOneBoardXAlwaysWins() {
-        //Settings
-        String direction = "";
-
         //Arrange
-        Board board = boardBuilder.buildBoard(boardStructure.getBoardOneByOne(), Token.X(), direction);
-
-        //Act
-        String actual = gameResult.getGameResult(board);
+        Board board = boardBuilder.buildBoard(boardStructure.getBoardOneByOne(), Token.X(), direction.left());
 
         //Assert
-        assertEquals(gameMessage.getGameMessageXWon(), actual);
+        assertEquals(gameMessage.getGameMessageXWon(), gameResult.getGameResult(board));
     }
 
     /**
@@ -107,11 +98,8 @@ public class TicTacToeTest {
         //Arrange
         Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.left());
 
-        //Act
-        String actual = gameResult.getGameResult(board);
-
         //Assert
-        assertEquals(gameMessage.getGameMessageXWon(), actual);
+        assertEquals(gameMessage.getGameMessageXWon(), gameResult.getGameResult(board));
     }
 
     /**
@@ -124,11 +112,8 @@ public class TicTacToeTest {
         //Arrange
         Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.right());
 
-        //Act
-        String actual = gameResult.getGameResult(board);
-
         //Assert
-        assertEquals(gameMessage.getGameMessageXWon(), actual);
+        assertEquals(gameMessage.getGameMessageXWon(), gameResult.getGameResult(board));
     }
 
     /**
@@ -141,11 +126,8 @@ public class TicTacToeTest {
         //Arrange
         Board board = boardBuilder.buildBoard(boardStructure.getBoardTwoByTwo(), Token.X(), direction.top());
 
-        //Act
-        String actual = gameResult.getGameResult(board);
-
         //Assert
-        assertEquals(gameMessage.getGameMessageXWon(), actual);
+        assertEquals(gameMessage.getGameMessageXWon(), gameResult.getGameResult(board));
     }
 
 }
